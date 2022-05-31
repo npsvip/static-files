@@ -2142,6 +2142,11 @@ function show(id, msg) {
                             $(item).addClass("layui-this");
                         }
                     });
+                    config.classParams.classificationId = GetRequest().id;
+                } else if (GetRequest().key == "colorId") {
+                    config.classParams.colorId = GetRequest().id;
+                } else if (GetRequest().key == "tagId") {
+                    config.classParams.tagId = GetRequest().id;
                 }
                 const dom = GetRequest().key.substring(GetRequest().key.length - 2, 0);
                 $(`.${dom} .class-span`).each(function (index, item) {
