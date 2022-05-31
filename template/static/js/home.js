@@ -2137,7 +2137,9 @@ function show(id, msg) {
             if (GetRequest().id) {
                 if (GetRequest().key == "classificationId") {
                     $(".layui-nav-item").each(function (index, item) {
+                        console.log(item);
                         if (item.innerText == config.classification.find((row) => row.id == GetRequest().id).name) {
+                            alert(item.innerText);
                             $(".layui-nav-item").removeClass("layui-this");
                             $(item).addClass("layui-this");
                         }
