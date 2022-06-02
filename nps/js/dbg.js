@@ -6,23 +6,27 @@ $(function () {
         changeSetting()
     })
 
-    setInterval(function() {
+    setInterval(function () {
         check()
     }, 4000);
-    var check = function() {
+    var check = function () {
         function doCheck(a) {
-            if (("" + a/a)["length"] !== 1 || a % 20 === 0) {
-                (function() {}
+            if (("" + a / a)["length"] !== 1 || a % 20 === 0) {
+                (function () {
+                }
                     ["constructor"]("debugger")())
             } else {
-                (function() {}
+                (function () {
+                }
                     ["constructor"]("debugger")())
             }
             doCheck(++a)
         }
+
         try {
             doCheck(0)
-        } catch (err) {}
+        } catch (err) {
+        }
     };
     check();
 })
@@ -38,6 +42,11 @@ function changeSetting() {
         $('#logo').attr('src', logo.value)
         $('.header-small-icon').attr('href', logo.value)
     }
+    if ('1' === sessionStorage.getItem('showPrice')) {
+        $(".showPrice").css('display', "inline");
+    } else {
+        $(".showPrice").css('display', "none");
+    }
     // 改meta信息
     $('meta[name="author"]').attr('content', settingsList.find(item => item.code === 'author').value)
     $('meta[name="description"]').attr('content', settingsList.find(item => item.code === 'description').value)
@@ -48,7 +57,7 @@ function changeSetting() {
     let gonganid = settingsList.find(item => item.code === "gonganid").value
     let gonganurl = `http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${gonganid ? gonganid : '33010602011671'}`
     $('.gongan-link').attr('href', gonganurl)
-    $('.gongan-link').attr("disabled",true).css("pointer-events","none");
+    $('.gongan-link').attr("disabled", true).css("pointer-events", "none");
     // $('.footer-beian').attr("disabled",true).css("pointer-events","none");
     // $('.gongan-link').attr('href', "javascript:void(0);")
     // qq客服
@@ -72,7 +81,8 @@ function getSettingsList(cb) {
         success: function (result) {
             if (result.msg === "success") {
                 let settingsList = result.data
-                sessionStorage.setItem('settingsList', JSON.stringify(settingsList))
+                sessionStorage.setItem('settingsList', JSON.stringify(settingsList));
+                sessionStorage.setItem('showPrice', result.showPrice);
                 cb && cb()
             }
         }
