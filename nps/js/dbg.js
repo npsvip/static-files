@@ -43,7 +43,7 @@ function changeSetting() {
         $('.header-small-icon').attr('href', logo.value)
     }
     if ('1' === sessionStorage.getItem('showPrice')) {
-        $(".showPrice").css('display', "inline");
+        $(".showPrice").css('display', "");
     } else {
         $(".showPrice").css('display', "none");
     }
