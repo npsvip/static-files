@@ -1879,6 +1879,7 @@ function show(id, msg) {
                                 (item) => item.name == data[0].innerText
                             )[0].id;
                             config.classParams.classificationId = classificationId;
+                            config.classParams.current = 1;
                             getTemplateList(config.classParams);
                         });
                     });
@@ -1919,6 +1920,7 @@ function show(id, msg) {
                     });
                     item.style.color = "#3db389";
                     config.classParams[item.getAttribute("data-key")] = parseInt(item.getAttribute("data-id"));
+                    config.classParams.current = 1;
                     getTemplateList(config.classParams);
                 };
             });
@@ -2137,7 +2139,6 @@ function show(id, msg) {
             if (GetRequest().id) {
                 if (GetRequest().key == "classificationId") {
                     $(".layui-nav-item").each(function (index, item) {
-                        console.log(item);
                         if (item.innerText == config.classification.find((row) => row.id == GetRequest().id).name) {
                             $(".layui-nav-item").removeClass("layui-this");
                             $(item).addClass("layui-this");
