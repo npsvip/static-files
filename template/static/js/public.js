@@ -279,6 +279,7 @@ window.isLogin = function () {
         const info = JSON.parse(localStorage.getItem("user")).userInfo;
         $(".login-btn").hide();
         $(".collection").show();
+        $(".recharge").show();
         $(".username").show().html(`
         <img src="${info.qqImg}" class="layui-nav-img" />
         <span>${info.username}</span>
@@ -329,6 +330,7 @@ window.isLogin = function () {
         $(".username").hide();
         $(".login-btn").show();
         $(".collection").hide();
+        $(".recharge").hide();
         $(".js-fh5co-close-offcanvas").click();
     }
 };
