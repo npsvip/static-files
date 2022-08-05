@@ -349,7 +349,6 @@ window.topUp = function () {
     $("#login-form").hide();
 };
 
-
 $(function () {
     mobileMenuOutsideClick();
     burgerMenu();
