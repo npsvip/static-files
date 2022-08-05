@@ -86,7 +86,13 @@
         >
         <button type="button" class="layui-btn download">免费下载</button>
         <a
-            href="tencent://message/?uin=1352256075&Menu=yes&%20Service=300&sigT=42a1e5347953b64c5ff3980f8a6e644d4b31456cb0b6ac6b27663a3c4dd0f4aa14a543b1716f9d45"
+            href="https://www.npsvip.com"
+            class="layui-btn"
+            target="_blank"
+            >内网穿透</a
+        >
+        <a
+            href="tencent://message/?uin=1163363720&Menu=yes&%20Service=300&sigT=42a1e5347953b64c5ff3980f8a6e644d4b31456cb0b6ac6b27663a3c4dd0f4aa14a543b1716f9d45"
             class="layui-btn"
             target="_blank"
             >运维支持</a
