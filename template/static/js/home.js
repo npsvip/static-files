@@ -68,6 +68,67 @@ function detailInfo(id) {
 
 // 获取模板列表
 function getTemplateList(obj) {
+    if (null == obj) {
+        obj = {};
+        // 赋值
+        if (undefined != localStorage.getItem('classificationId') && 'null' != localStorage.getItem('classificationId') && '' != localStorage.getItem('classificationId')) {
+            obj.classificationId = localStorage.getItem('classificationId');
+            config.classParams['classificationId'] = localStorage.getItem('classificationId');
+
+            // 标题分类效果
+            $(".layui-nav-item").each(function (index, item) {
+                if (item.innerText == config.classification.find((row) => row.id == obj.classificationId).name) {
+                    $(".layui-nav-item").removeClass("layui-this");
+                    $(item).addClass("layui-this");
+                }
+            });
+            // 展开分类效果
+            $(`.classification .class-span`).each(function (index, item) {
+                if (obj.classificationId == item.getAttribute("data-id")) {
+                    $(item).css("color", "");
+                    item.style.color = "#3db389";
+                }
+            });
+        }
+        if (undefined != localStorage.getItem('colorId') && 'null' != localStorage.getItem('colorId') && '' != localStorage.getItem('colorId')) {
+            obj.colorId = localStorage.getItem('colorId');
+            config.classParams['colorId'] = localStorage.getItem('colorId');
+
+            $(`.color .class-span`).each(function (index, item) {
+                if (obj.colorId == item.getAttribute("data-id")) {
+                    $(item).css("color", "");
+                    item.style.color = "#3db389";
+                }
+            });
+        }
+        if (undefined != localStorage.getItem('tagId') && 'null' != localStorage.getItem('tagId') && '' != localStorage.getItem('tagId')) {
+            obj.tagId = localStorage.getItem('tagId');
+            config.classParams['tagId'] = localStorage.getItem('tagId');
+
+            $(`.tag .class-span`).each(function (index, item) {
+                if (obj.tagId == item.getAttribute("data-id")) {
+                    $(item).css("color", "");
+                    item.style.color = "#3db389";
+                }
+            });
+        }
+        if (undefined != localStorage.getItem('name') && 'null' != localStorage.getItem('name') && '' != localStorage.getItem('name')) {
+            obj.name = localStorage.getItem('name');
+            config.classParams['name'] = localStorage.getItem('name');
+
+            $('#searchInput').val(obj.name);
+        }
+        if (undefined != localStorage.getItem('current') && 'null' != localStorage.getItem('current') && '' != localStorage.getItem('current')) {
+            obj.current = localStorage.getItem('current');
+            config.classParams['current'] = localStorage.getItem('current');
+        }
+        if (undefined != localStorage.getItem('size') && 'null' != localStorage.getItem('size') && '' != localStorage.getItem('size')) {
+            obj.size = localStorage.getItem('size');
+            config.classParams['size'] = localStorage.getItem('size');
+        }
+
+    }
+
     let params = {
         classificationId: null,
         colorId: null,
@@ -78,6 +139,13 @@ function getTemplateList(obj) {
         ...obj
     };
 
+    // 缓存搜索条件，返回时增强用户体验
+    localStorage.setItem('classificationId', params.classificationId);
+    localStorage.setItem('colorId', params.colorId);
+    localStorage.setItem('tagId', params.tagId);
+    localStorage.setItem('name', params.name);
+    localStorage.setItem('current', params.current);
+    localStorage.setItem('size', params.size);
 
     layui.use("laypage", function () {
         var laypage = layui.laypage;
