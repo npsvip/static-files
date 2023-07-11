@@ -2171,7 +2171,7 @@ function show(id, msg) {
         });
         setMealApi().then((res) => {
             $("#meal-select").html(
-                `<option value="">-- 未选择套餐 --</option>${res.data
+                `${res.data
                     .map((item) => `<option value='${item.id}'>${item.remark}</option>`)
                     .join(" ")}`
             );
